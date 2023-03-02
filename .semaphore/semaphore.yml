@@ -81,7 +81,7 @@ blocks:
             # SSH_PRIVATE_KEY: ${{SECRET:your-secret-ssh-key}}
           commands:
             - echo "SSH_PRIVATE_KEY"
-            - expect -c 'spawn ssh root@109.74.202.103 ; expect "password:"; send "Muhammed-1998\r"; interact'
+            - sh login.sh
             - echo "SSH_PRIVATE_KEY Next"
 
 
