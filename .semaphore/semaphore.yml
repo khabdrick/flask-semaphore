@@ -92,4 +92,4 @@ blocks:
                   }
               }'
             - echo "SSH_PRIVATE_KEY Next"
-            - ls
+            - cd .. && ls
