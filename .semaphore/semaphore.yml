@@ -81,7 +81,7 @@ blocks:
             # SSH_PRIVATE_KEY: ${{SECRET:your-secret-ssh-key}}
           commands:
             - echo "SSH_PRIVATE_KEY"
-            - ls
+            - cd .. && cd semaphore
             - echo "SSH_PRIVATE_KEY Next"
 
 
