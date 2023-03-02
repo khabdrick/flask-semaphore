@@ -4,7 +4,7 @@ version: v1.0
 # Name your pipeline. In case you connect multiple pipelines with promotions,
 # the name will help you differentiate between, for example, a CI build phase
 # and delivery phases.
-name: Semaphore FastAPI CI Example Pipeline
+name: Semaphore Pipeline
 
 # An agent defines the environment in which your code runs.
 # It is a combination of one of the available machine types and operating
@@ -80,7 +80,7 @@ blocks:
           #   SEVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }} 
             # SSH_PRIVATE_KEY: ${{SECRET:your-secret-ssh-key}}
           commands:
-            - echo "SSH_PRIVATE_KEY"
+
             - expect -c 'spawn ssh root@109.74.202.103; expect {
                   "Are you sure you want to continue connecting (yes/no)?" {
                       send "yes\r"
@@ -91,5 +91,6 @@ blocks:
                       interact
                   }
               }'
-            - echo "SSH_PRIVATE_KEY Next"
-            - cd .. && ls
+
+            - cd flask-semaphore && git pull
+            - ls
