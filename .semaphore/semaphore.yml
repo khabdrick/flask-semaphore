@@ -92,5 +92,5 @@ blocks:
                   }
               }'
 
-            - cd flask-semaphore && git pull
+            - cd flask-semaphore && git pull #I am still not able to access my remote server
             - ls
