@@ -81,7 +81,7 @@ blocks:
             # SSH_PRIVATE_KEY: ${{SECRET:your-secret-ssh-key}}
           commands:
             - echo "SSH_PRIVATE_KEY"
-            - sh .semaphore/login.sh
+            - cd .. && ls
             - echo "SSH_PRIVATE_KEY Next"
 
 
