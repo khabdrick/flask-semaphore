@@ -92,5 +92,4 @@ blocks:
                   }
               }'
             - echo "SSH_PRIVATE_KEY Next"
-            - cd flask-semaphore && git pull
             - ls
