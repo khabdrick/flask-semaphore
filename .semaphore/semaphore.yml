@@ -81,7 +81,7 @@ blocks:
             # SSH_PRIVATE_KEY: ${{SECRET:your-secret-ssh-key}}
           commands:
 
-            - sh login.sh
+            - cd /home/semaphore/flask-semaphore && sh login.sh
 
             - cd flask-semaphore && git pull #I am still not able to access my remote server
             - ls
