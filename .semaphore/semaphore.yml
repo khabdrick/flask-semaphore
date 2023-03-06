@@ -70,6 +70,21 @@ blocks:
             # Test the application's routes.
             - pytest   
 
+  - name: ssh
+    task:
+      prologue:
+        commands:
+          - checkout
+          - cache restore
+      jobs:
+        - name: SSH
+          commands:
+
+            - sh login.sh
+
+            # - cd flask-semaphore && git pull #I am still not able to access my remote server
+            - ls
+
   - name: Deploy to production
     task:
       prologue:
@@ -78,14 +93,9 @@ blocks:
           - cache restore
       jobs:
         - name: Deploy
-          # environment:
-          #   SERVER_IP: <your-server-ip>
-          #   SERVER_USER: <your-server-username>
-          #   SEVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }} 
-            # SSH_PRIVATE_KEY: ${{SECRET:your-secret-ssh-key}}
           commands:
 
-            - sh login.sh
+            # - sh login.sh
 
-            - cd flask-semaphore && git pull #I am still not able to access my remote server
+            # - cd flask-semaphore && git pull #I am still not able to access my remote server
             - ls
