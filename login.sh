@@ -8,8 +8,12 @@ expect -c 'spawn ssh root@109.74.202.103; expect {
                       exp_continue
                       
                   }
-                  "#" {
-                    send "ls\r"
+                  "~#" {
+                    send "cd flask-semaphore && git pull\r"
+                    exp_continue
+                  }
+                  "flask-semaphore#" {
+                    send "exit\r"
                     interact
                   }
               }'
