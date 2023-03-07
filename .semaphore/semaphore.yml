@@ -80,4 +80,3 @@ blocks:
         - name: SSH
           commands:
             - sh login.sh
-            # - cd flask-semaphore && git pull #I am still not able to access my remote server
