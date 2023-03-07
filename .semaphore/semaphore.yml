@@ -82,5 +82,4 @@ blocks:
             - sh login.sh
             - ls 
 
-`
 # - cd flask-semaphore && git pull #I am still not able to access my remote server
