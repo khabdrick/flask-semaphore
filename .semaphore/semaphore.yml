@@ -79,23 +79,8 @@ blocks:
       jobs:
         - name: SSH
           commands:
-
             - sh login.sh
-
-            # - cd flask-semaphore && git pull #I am still not able to access my remote server
             - ls 
 
-  - name: Deploy to production
-    task:
-      prologue:
-        commands:
-          - checkout
-          - cache restore
-      jobs:
-        - name: Deploy
-          commands:
-
-            # - sh login.sh
-
-            # - cd flask-semaphore && git pull #I am still not able to access my remote server
-            - ls
+`
+# - cd flask-semaphore && git pull #I am still not able to access my remote server
