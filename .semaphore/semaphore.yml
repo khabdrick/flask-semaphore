@@ -79,7 +79,5 @@ blocks:
       jobs:
         - name: SSH
           commands:
-            - sh login.sh
-            - ls 
-
-# - cd flask-semaphore && git pull #I am still not able to access my remote server
+            - sh login.sh && ls
+            - cd flask-semaphore && git pull #I am still not able to access my remote server
