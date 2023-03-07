@@ -5,6 +5,11 @@ expect -c 'spawn ssh root@109.74.202.103; expect {
                   }
                   "passwor" {
                       send "Muhammed-1998\r"
-                      interact
+                      exp_continue
+                      
+                  }
+                  "#" {
+                    send "ls\r"
+                    interact
                   }
               }'
