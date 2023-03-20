@@ -1,12 +1,7 @@
-expect -c 'spawn ssh root@109.74.202.103; expect {
+expect -c 'spawn ssh -i $SSH_KEY root@151.236.216.158; expect {
                   "Are you sure you want to continue connecting" {
                       send "yes\r"
                       exp_continue
-                  }
-                  "passwor" {
-                      send "Muhammed-1998\r"
-                      exp_continue
-                      
                   }
                   "~#" {
                     send "cd flask-semaphore && git pull\r"

@@ -1,16 +1,10 @@
 # Use the latest stable version of Semaphore 2.0 YML syntax:
 version: v1.0
 
-# Name your pipeline. In case you connect multiple pipelines with promotions,
-# the name will help you differentiate between, for example, a CI build phase
-# and delivery phases.
-name: Semaphore Pipeline
+# Name your pipeline. 
+name: Deploy to Linux Server
 
 # An agent defines the environment in which your code runs.
-# It is a combination of one of the available machine types and operating
-# system images.
-# See https://docs.semaphoreci.com/article/20-machine-types
-# and https://docs.semaphoreci.com/article/32-ubuntu-1804-image
 agent:
   machine:
     type: e1-standard-2
@@ -21,32 +15,23 @@ global_job_config:
     commands:
       - sem-version python 3.8
 
-# Blocks are the heart of a pipeline and are executed sequentially.
 # Each block has a task that defines one or more jobs. Jobs define the
 # commands to execute.
-# See https://docs.semaphoreci.com/article/62-concepts
 blocks:
   - name: "Install Dependencies"
     task:
       # This block installs all the python dependencies,
       # as well as all the required Linux packages.
-      # The prologue section is always executed before each job on
-      # the block.
-      # See https://docs.semaphoreci.com/article/50-pipeline-yaml#prologue
       prologue:
         commands:
           # Set the python version.
-          - sudo apt-get update && sudo apt-get install -y python3-dev expect && sudo apt-get install default-libmysqlclient-dev 
+          - sudo apt-get update && sudo apt-get install -y python3-dev expect 
       jobs:
         - name: pip
           commands:
             # Get the latest version of our source code from GitHub:
-            # See https://docs.semaphoreci.com/article/54-toolbox-reference#checkout
             - checkout
-            # Restore dependencies from cache. This command will not fail in
-            # case of a cache miss. In case of a cache hit, pip can use it
-            # to speed up the installation.
-            # For more info on caching, see https://docs.semaphoreci.com/article/149-caching
+            # Restore dependencies from cache.
             - cache restore
             # Install python dependencies.
             # If not found in the cache, pip will download them.
@@ -57,7 +42,6 @@ blocks:
   - name: "Run Unit Tests"
     task:
       # This block runs the unit tests.
-    
       prologue:
         commands:
           - checkout
@@ -67,15 +51,18 @@ blocks:
       jobs:
         - name: Test routes
           commands:
-            # Test the application's routes.
-            - pytest   
+            # Test the API.
+            - pytest
 
-  - name: ssh
+  - name: "Deploy"
     task:
+       # This block runs the command in login.sh 
       prologue:
         commands:
           - checkout
           - cache restore
+      secrets:
+        - name: Test
       jobs:
         - name: SSH
           commands:
