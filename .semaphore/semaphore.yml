@@ -61,9 +61,10 @@ blocks:
         commands:
           - checkout
           - cache restore
-      secrets:
-        - name: Test
+      
       jobs:
         - name: SSH
           commands:
             - sh login.sh
+      secrets:
+        - name: Test
