@@ -65,8 +65,5 @@ blocks:
       jobs:
         - name: SSH
           commands:
-            - echo $SSH_KEY > ~/.ssh/id_ed25519.pub
-            - chmod -R 744 ~/.ssh
             - sh login.sh
-      secrets:
-        - name: Test
+

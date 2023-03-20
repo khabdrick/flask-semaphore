@@ -3,6 +3,10 @@ expect -c 'spawn ssh root@151.236.216.158; expect {
                       send "yes\r"
                       exp_continue
                   }
+                  "password" {
+                      send "my-server-password\r"
+                      exp_continue
+                  }
                   "~#" {
                     send "cd flask-semaphore && git pull\r"
                     exp_continue
