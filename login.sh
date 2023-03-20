@@ -1,4 +1,4 @@
-expect -c 'spawn ssh -i \'$SSH_KEY' root@151.236.216.158; expect {
+expect -c 'spawn ssh -i '~/.ssh/id_ed25519.pub' root@151.236.216.158; expect {
                   "Are you sure you want to continue connecting" {
                       send "yes\r"
                       exp_continue
